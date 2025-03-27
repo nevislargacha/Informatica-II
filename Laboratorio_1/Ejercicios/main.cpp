@@ -15,6 +15,28 @@ void ejercicio5();
 
 void ejercicio7();
 
+void ejercicio9();
+
+void ejercicio11();
+
+void ejercicio13();
+
+void ejercicio15();
+
+void ejercicio17();
+
+void ejercicio19();
+
+void ejercicio21();
+
+void ejercicio23();
+
+void ejercicio25();
+
+void ejercicio27();
+
+void ejercicio29();
+
 int main()
 {
     //ejercicio1();
@@ -22,7 +44,19 @@ int main()
     //ejercicio3();
     //ejercicio4();
     //ejercicio5();
-    ejercicio7();
+    //ejercicio7();
+    //ejercicio9();
+    //ejercicio11();
+    //ejercicio13();
+    //ejercicio15();
+    //ejercicio17();
+    ejercicio19();
+    //ejercicio21();
+    //ejercicio23();
+    //ejercicio25();
+    //ejercicio27();
+    //ejercicio29();
+
     return 0;
 }
 
@@ -116,4 +150,109 @@ void ejercicio7(){
     cout << "La sumatoria desde 0 hasta " << a << "es: " << b << endl;
 
 }
+
+void ejercicio9(){
+
+    float N, pi = 3.1416;
+
+    cout << "Ingrese el valor del radio:";
+    cin >> N;
+    float perimetro = 2 * pi * N;
+    float area = pi * N * N;
+
+    cout << "Perimetro: " << perimetro << endl;
+    cout << "Area: " << area << endl;
+
+
+}
+void ejercicio11() {
+    int N;
+
+    cout << "Ingrese un número: ";
+    cin >> N;
+
+    for (int i = 1; i <= 10; i++) {
+        cout << i << "x" << N << "=" << i * N << endl;
+    }
+}
+
+void ejercicio13() {
+    int n;
+
+    cout << "Ingrese un número: ";
+    cin >> n;
+
+    cout << "Los divisores de " << n << " son:" << endl;
+    for (int i = 1; i <= n; i++) {
+        if (n % i == 0) {
+            cout << i << endl;
+        }
+
+    }
+}
+
+void ejercicio15() {
+    int numero, suma = 0;
+
+    while (true) {
+        cout << "Ingresa un número (0 para finalizar): ";
+        cin >> numero;
+
+
+        if (numero == 0) {
+            break;
+        }
+
+
+        suma += numero;
+    }
+
+
+    cout << "El resultado de la sumatoria es: " << suma << endl;
+}
+
+void ejercicio17() {
+
+    int numero;
+    int mayor = -1;
+
+    cout << "Ingrese un número: ";
+    cin >> numero;
+
+    while (numero != 0) {
+        if (numero > mayor) {
+            mayor = numero;
+        }
+
+        cout << "Ingrese un número: ";
+        cin >> numero;
+    }
+
+    cout << "El numero mayor fue: " << mayor << endl;
+
+
+}
+
+void ejercicio19() {
+
+    int numero, cantidad_divisores = 0;
+
+    cout << "Ingrese un número: ";
+    cin >> numero;
+
+    for (int i = 1; i <= numero; i++) {
+        if (numero % i == 0) {
+            cantidad_divisores += 1;
+        }
+    }
+
+    if(cantidad_divisores == 2){
+        cout << numero << " es un numero primo.";
+    }else{
+        cout << numero << " NO es un numero primo.";
+    }
+
+    cout << cantidad_divisores;
+}
+
 
