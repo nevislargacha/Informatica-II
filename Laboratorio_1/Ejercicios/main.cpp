@@ -58,9 +58,6 @@ int main()
     //ejercicio25();
     //ejercicio27();
     //ejercicio29();
-
-
-    return 0;
 }
 
 void ejercicio1(){
@@ -384,6 +381,161 @@ void ejercicio29() {
             cout << "Por favor, responde con 0, 1 o 2" << endl;
         }
     }
+}
+
+void problema1() {
+    char caracter;
+
+
+    cout << "Ingresa un caracter: ";
+    cin >> caracter;
+
+    if ((caracter >= 'a' && caracter <= 'z') || (caracter >= 'A' && caracter <= 'Z')) {
+        if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u' ||
+            caracter == 'A' || caracter == 'E' || caracter == 'I' || caracter == 'O' || caracter == 'U') {
+            cout << caracter << " es una vocal." << endl;
+        }
+
+        else {
+            cout << caracter << " es una consonante." << endl;
+        }
+    }
+    // Si no es una letra, mostrar que no es una letra
+    else {
+        cout << "No es una letra." << endl;
+    }
+}
+
+void problema3() {
+    int mes, dia, ano;
+
+
+    cout << "Introduce el numero del mes: ";
+    cin >> mes;
+
+
+
+    if (mes < 1 || mes > 12) {
+        cout << mes << " es un mes invalido." << endl;
+        return;
+    }
+    cout << "Introduce el dia: ";
+    cin >> dia;
+    cout << "Introduce el ano: ";
+    cin >> ano;
+
+
+    if (mes == 2) {
+        if (dia < 1 || dia > 28) {
+
+            if (dia == 29 && (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0))) {
+                cout << dia << "/" << mes << " es una fecha valida en bisiesto." << endl;
+            } else {
+                cout << dia << "/" << mes << " es una fecha invalida." << endl;
+            }
+        } else {
+            cout << dia << "/" << mes << " es una fecha valida." << endl;
+        }
+    }
+    else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+        if (dia < 1 || dia > 30) {
+            cout << dia << "/" << mes << " es una fecha invalida." << endl;
+        } else {
+            cout << dia << "/" << mes << " es una fecha valida." << endl;
+        }
+    }
+    else {
+        if (dia < 1 || dia > 31) {
+            cout << dia << "/" << mes << " es una fecha invalida." << endl;
+        } else {
+            cout << dia << "/" << mes << " es una fecha valida." << endl;
+        }
+    }
+}
+
+void problema5() {
+    int n;
+
+
+    cout << "Ingrese un numero impar: ";
+    cin >> n;
+
+
+    if (n % 2 == 0) {
+        cout << "El numero debe ser impar." << endl;
+        return;
+    }
+
+
+    for (int i = 1; i <= n; i += 2) {
+
+        for (int j = 0; j < (n - i) / 2; ++j) {
+            cout << " ";
+        }
+
+        for (int j = 0; j < i; ++j) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+
+    for (int i = n - 2; i >= 1; i -= 2) {
+
+        for (int j = 0; j < (n - i) / 2; ++j) {
+            cout << " ";
+        }
+
+        for (int j = 0; j < i; ++j) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+}
+void problema7()  {
+
+    int n;
+    cout << "Ingresa un numero n: ";
+    cin >> n;
+
+    int a = 1, b = 1, sum = 0;
+
+
+    while (b < n) {
+        if (b % 2 == 0) {
+            sum += b;
+        }
+
+
+        int sigN = a + b;
+        a = b;
+        b = sigN;
+    }
+
+    cout << "El resultado de la suma es: " << sum << endl;
+
+}
+
+void problema9()  {
+    int N, sum = 0;
+
+
+    cout << "Ingrese un numero entero: ";
+    cin >> N;
+
+
+    int num = N;
+    while (num > 0) {
+        int dig = num % 10;
+        sum += pow(dig, dig);
+        num /= 10;
+    }
+
+
+    cout << "El resultado de la suma es: " << sum << endl;
+
+
 }
 
 
