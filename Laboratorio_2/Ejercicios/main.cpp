@@ -21,6 +21,35 @@ el primer valor pasa a ser el ultimo y el ultimo valor pasa a ser el primero
 void ejercicio2();
 void fun_c(double *a, int n, double *promedio, double*suma);
 
+void ejercicio3();
+/*
+● b
+R//
+77
+
+● b+2
+R//
+28
+
+● *(b+2)
+R//
+28
+
+● *(b+2)+1
+R//
+39
+
+● *(*(b+2)+1)
+R//
+39
+
+● b[3][1]
+R//
+3
+● *b++
+R//
+*b++ no se puede usar directamente porque b es un arreglo y no puede incrementarse
+*/
 
 int main()
 {
