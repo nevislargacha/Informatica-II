@@ -33,7 +33,14 @@ int main()
     //problema8();
     //problema9();
     //problema11();
-    problema12();
+    //problema12();
+    //problema13();
+    problema14();
+    //problema15();
+    //problema16();
+    //problema18();
+
+
 
 }
 void problema1(){}
@@ -259,65 +266,30 @@ void problema9(){
 const int filas = 15;
 const int asientos = 20;
 
-void inicializarsala(char sala[filas][asientos]) {
+void problema11() {
+    char sala[filas][asientos];
+    int opcion;
+    char filachar;
+    int numero;
+
     for (int i = 0; i < filas; ++i) {
         for (int j = 0; j < asientos; ++j) {
             sala[i][j] = '-';
         }
     }
-}
-
-void mostrarsala(char sala[filas][asientos]) {
-    cout << "\nEstado de la sala:\n";
-    for (int i = 0; i < filas; ++i) {
-        char letraFila = 'A' + i;
-        cout << letraFila << " ";
-        for (int j = 0; j < asientos; ++j) {
-            cout << sala[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
-void reservarasiento(char sala[filas][asientos], char filaChar, int numero) {
-    int fila = filaChar - 'A';
-    if (fila < 0 || fila >= filas || numero < 1 || numero > asientos) {
-        cout << "Entrada inválida.\n";
-        return;
-    }
-
-    if (sala[fila][numero - 1] == '+') {
-        cout << "El asiento ya está reservado.\n";
-    } else {
-        sala[fila][numero - 1] = '+';
-        cout << "Reserva realizada con éxito.\n";
-    }
-}
-
-void cancelarreserva(char sala[filas][asientos], char filaChar, int numero) {
-    int fila = filaChar - 'A';
-    if (fila < 0 || fila >= filas || numero < 1 || numero > asientos) {
-        cout << "Entrada inválida.\n";
-        return;
-    }
-
-    if (sala[fila][numero - 1] == '-') {
-        cout << "El asiento ya estaba disponible.\n";
-    } else {
-        sala[fila][numero - 1] = '-';
-        cout << "Reserva cancelada con éxito.\n";
-    }
-}
-
-void problema11() {
-    char sala[filas][asientos];
-    int opcion;
-    char fila;
-    int numero;
-    inicializarsala(sala);
 
     do {
-        mostrarsala(sala);
+
+        cout << "\nEstado de la sala:\n";
+        for (int i = 0; i < filas; ++i) {
+            char letraFila = 'A' + i;
+            cout << letraFila << " ";
+            for (int j = 0; j < asientos; ++j) {
+                cout << sala[i][j] << " ";
+            }
+            cout << endl;
+        }
+
         cout << "\nMenú:\n";
         cout << "1. Reservar asiento\n";
         cout << "2. Cancelar reserva\n";
@@ -327,14 +299,30 @@ void problema11() {
 
         if (opcion == 1 || opcion == 2) {
             cout << "Ingrese la fila (A-O): ";
-            cin >> fila;
+            cin >> filachar;
             cout << "Ingrese el número de asiento (1-20): ";
             cin >> numero;
 
             if (opcion == 1) {
-                reservarasiento(sala, fila, numero);
+                int filanumero = filachar - 'A';
+                if (filanumero < 0 || filanumero >= filas || numero < 1 || numero > asientos) {
+                    cout << "Entrada inválida.\n";
+                }else if (sala[filanumero][numero - 1] == '+') {
+                    cout << "El asiento ya está reservado.\n";
+                } else {
+                    sala[filanumero][numero - 1] = '+';
+                    cout << "Reserva realizada con éxito.\n";
+                }
             } else {
-                cancelarreserva(sala, fila, numero);
+                int filanumero = filachar - 'A';
+                if (filanumero < 0 || filanumero >= filas || numero < 1 || numero > asientos) {
+                    cout << "Entrada inválida.\n";
+                }else if (sala[filanumero][numero - 1] == '-') {
+                    cout << "El asiento ya estaba disponible.\n";
+                } else {
+                    sala[filanumero][numero - 1] = '-';
+                    cout << "Reserva cancelada con éxito.\n";
+                }
             }
         } else if (opcion != 3) {
             cout << "Opción inválida.\n";
@@ -420,4 +408,171 @@ void problema12() {
     } else {
         cout << "La matriz NO es un cuadro mágico.\n";
     }
+}
+
+const int filasmatrizestrellas = 6;
+const int columnasmatrizestrellas = 8;
+int conteoestrellas = 0;
+
+void contarestrellas(int (*matriz)[filasmatrizestrellas][columnasmatrizestrellas]) {
+    float promedio;
+    conteoestrellas = 0;
+    // Recorremos la matriz sin tocar los bordes
+    for (int i = 1; i < filasmatrizestrellas - 1; i++) {
+        for (int j = 1; j < columnasmatrizestrellas - 1; j++) {
+            promedio = ((*matriz)[i][j] + (*matriz)[i][j - 1] + (*matriz)[i][j + 1] +
+                        (*matriz)[i - 1][j] + (*matriz)[i + 1][j]) / 5.0;
+
+            if (promedio > 6) {
+                conteoestrellas++;
+                cout << "Estrella encontrada en posición (" << i << ", " << j << ") con promedio: " << promedio << endl;
+            }
+        }
+    }
+}
+
+void problema13() {
+    int matriz[filasmatrizestrellas][columnasmatrizestrellas] = {
+        {0, 3, 4, 0, 0, 0, 6, 8},
+        {5,13, 6, 0, 0, 0, 2, 3},
+        {2, 6, 2, 7, 3, 0,10, 0},
+        {0, 0, 4,15, 4, 1, 6, 0},
+        {0, 0, 7,12, 6, 9,10, 4},
+        {5, 0, 6,10, 6, 4, 8, 0}
+    };
+
+    contarestrellas(&matriz);
+
+    cout << "\nNúmero total de estrellas encontradas: " << conteoestrellas << endl;
+}
+
+const int n = 5;
+
+void imprimirmatriz(int matriz[n][n]) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void problema14() {
+    int matriz[n][n];
+    int rotada90[n][n], rotada180[n][n], rotada270[n][n];
+
+    int contador = 1;
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            matriz[i][j] = contador++;
+
+    cout << "Matriz original:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    cout << "Matriz rotada 90°:\n";
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            rotada90[j][n - 1 - i] = matriz[i][j];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << rotada90[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    cout << "Matriz rotada 180°:\n";
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            rotada180[n - 1 - i][n - 1 - j] = matriz[i][j];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << rotada180[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    cout << "Matriz rotada 270°:\n";
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            rotada270[n - 1 - j][i] = matriz[i][j];
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << rotada270[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void problema15() {
+    int rectanguloa[4], rectangulob[4], rectanguloc[4];
+
+    cout << "Ingrese los datos del rectángulo A (x, y, ancho, alto): ";
+    for (int i = 0; i < 4; i++) {
+        cin >> rectanguloa[i];
+    }
+
+    cout << "Ingrese los datos del rectángulo B (x, y, ancho, alto): ";
+    for (int i = 0; i < 4; i++) {
+        cin >> rectangulob[i];
+    }
+
+    int rectanguloax1 = rectanguloa[0], rectanguloay1 = rectanguloa[1];
+    int rectanguloax2 = rectanguloa[0] + rectanguloa[2], rectanguloay2 = rectanguloa[1] + rectanguloa[3];
+
+    int rectangulobx1 = rectangulob[0], rectanguloby1 = rectangulob[1];
+    int rectangulobx2 = rectangulob[0] + rectangulob[2], rectanguloby2 = rectangulob[1] + rectangulob[3];
+
+    int rectangulocx1 = (rectanguloax1 > rectangulobx1) ? rectanguloax1 : rectangulobx1;
+    int rectangulocy1 = (rectanguloay1 > rectanguloby1) ? rectanguloay1 : rectanguloby1;
+    int rectangulocx2 = (rectanguloax2 < rectangulobx2) ? rectanguloax2 : rectangulobx2;
+    int rectangulocy2 = (rectanguloay2 < rectanguloby2) ? rectanguloay2 : rectanguloby2;
+
+    if (rectangulocx1 < rectangulocx2 && rectangulocy1 < rectangulocy2) {
+        rectanguloc[0] = rectangulocx1;
+        rectanguloc[1] = rectangulocy1;
+        rectanguloc[2] = rectangulocx2 - rectangulocx1;
+        rectanguloc[3] = rectangulocy2 - rectangulocy1;
+
+        cout << "Rectángulo intersección C: {";
+        for (int i = 0; i < 4; i++) {
+            cout << rectanguloc[i];
+            if (i < 3) cout << ", ";
+        }
+        cout << "}" << endl;
+    } else {
+        cout << "No hay intersección entre los rectángulos." << endl;
+    }
+}
+
+void problema16() {
+    int n;
+    cout << "Ingrese el valor de n: ";
+    cin >> n;
+
+    unsigned long long factorialden = 1;
+    unsigned long long factorialdenpor2 = 1;
+
+    for (int i = 2; i <= n; ++i)
+        factorialden *= i;
+
+    for (int i = 2; i <= 2 * n; ++i)
+        factorialdenpor2 *= i;
+
+    unsigned long long caminos = factorialdenpor2 / (factorialden * factorialden);
+
+    cout << "Para una malla de " << n << "x" << n << " puntos hay " << caminos << " caminos." << endl;
 }
