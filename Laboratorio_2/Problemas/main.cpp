@@ -35,7 +35,7 @@ int main()
     //problema11();
     //problema12();
     //problema13();
-    problema14();
+    //problema14();
     //problema15();
     //problema16();
     //problema18();
