@@ -2,16 +2,12 @@ TEMPLATE = app
 CONFIG += console c++17
 CONFIG -= app_bundle
 CONFIG -= qt
-QT += core
+
 SOURCES += \
-    enrutador.cpp \
+        enrutador.cpp \
         main.cpp \
-    red.cpp
+        red.cpp
 
 HEADERS += \
     enrutador.h \
     red.h
-
-
-
-

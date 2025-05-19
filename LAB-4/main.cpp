@@ -17,10 +17,10 @@ int main() {
         cout << "5. Conectar enrutadores\n";
         cout << "6. Desconectar enrutadores\n";
         cout << "7. Mostrar red\n";
-        cout << "8. Calcular camino mas corto\n";
+        cout << "8. Calcular camino más corto\n";
         cout << "9. Guardar red en archivo\n";
         cout << "10. Salir\n";
-        cout << "Seleccione una opcion: ";
+        cout << "Seleccione una opción: ";
         cin >> opcion;
 
         switch (opcion) {
@@ -33,14 +33,14 @@ int main() {
         }
         case 2: {
             int nodos, enlaces, costoMax;
-            cout << "Nodos, enlaces por nodo, costo maximo: ";
+            cout << "Nodos, enlaces por nodo, costo máximo: ";
             cin >> nodos >> enlaces >> costoMax;
             cout << "Origen: "; cin >> a;
             cout << "Destino: "; cin >> b;
             red.generarRedAleatoria(nodos, enlaces, costoMax);
             cout << "\nRed generada aleatoriamente:\n";
             red.mostrarRed();
-            cout << "\nCamino mas corto desde " << a << " hasta " << b << ":\n";
+            cout << "\nCamino más corto desde " << a << " hasta " << b << ":\n";
             red.imprimirCamino(a, b);
             break;
         }
@@ -83,7 +83,7 @@ int main() {
             cout << "Saliendo...\n";
             break;
         default:
-            cout << "Opcion no valida\n";
+            cout << "Opción no válida\n";
         }
 
     } while (opcion != 10);
